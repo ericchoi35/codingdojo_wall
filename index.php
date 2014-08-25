@@ -67,7 +67,7 @@
 						{
 							echo "<p>{$_SESSION['success_message']}</p>";
 							unset($_SESSION['success_message']);
-						}	?>
+						}	?> 
 		 			</div>
 				</div><!--end of main_right-->
 			</div><!--end of main_content-->

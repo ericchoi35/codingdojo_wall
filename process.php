@@ -14,6 +14,14 @@
 	{
 		post_message($_POST);
 	}
+	if(isset($_POST['action']) && $_POST['action'] == 'post_comment')
+	{	
+		post_comment($_POST);
+	}
+	if(isset($_POST['action']) && $_POST['action'] == 'delete_comment')
+	{	
+		delete_comment($_POST);
+	}
 	else
 	{
 		session_destroy();
@@ -114,32 +122,35 @@
 	{	
 		if(!empty($post['message']))
 		{	
-			if(!isset($_SESSION['messages']))
-			{
-				$_SESSION['messages'] = array();
-			}
 			// insert message into database
 			$query = "INSERT INTO messages (user_id, message, created_at, updated_at) VALUES ('{$_SESSION['user_id']}', '{$post['message']}', NOW(), NOW());";
 
 			run_mysql_query($query);
+		}	
+		header('Location: wall.php');
+		die();
+	}
 
-			// grab last message from database
-			$query1 = "SELECT * FROM messages ORDER BY id DESC LIMIT 1;";
+	function post_comment($post)
+	{
+		if(!empty($post['comment']))
+		{
+			$query = "INSERT INTO comments (user_id, message_id, comment, created_at, updated_at) VALUES ('{$_SESSION['user_id']}', '{$post['message_id']}', '{$post['comment']}', NOW(), NOW());";
 
-			$last_message = fetch_all($query1);
-
-			// format time of last message
-			$_SESSION['created_at'] = $last_message[0]['created_at'];
-			$_SESSION['created_at'] = date("F jS Y");
-
-			$_SESSION['message'][] = $post['message'];
-
-			array_push($_SESSION['messages'],)
+			run_mysql_query($query);
 		}
+		header('Location: wall.php');
+		die();
+	}
+
+	function delete_comment($post)
+	{
+		$query = "DELETE FROM comments WHERE id = '{$post['comment_id']}';";
+
+		run_mysql_query($query);
 		
 		header('Location: wall.php');
 		die();
 	}
 
-
- ?>
+?>

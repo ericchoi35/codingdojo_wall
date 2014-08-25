@@ -28,7 +28,7 @@
 }
 .post_area{
 	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	width: 650px;
 }
 .post_area h3{
@@ -50,12 +50,56 @@
 	border-color: blue;
 	font-size: .7em;
 }
-.message_area{
-	width: 700px;
-	padding: 10px;
-	height: 500px;
+#message_area{
+	width: 750px;
 }
-.message_area p{
-	margin-bottom: 10px;
+
+.messages{
+	font-size: .8em;
+	margin-bottom: 20px;
+	border: 2px solid silver;
+	padding: 20px 40px 10px 40px;
+}
+.messages h2 {
+	margin-bottom: 5px;
+}
+.messages p {
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+.messages textarea{
+	margin: 0;
+	margin-top: 10px;
 	display: block;
+	width: 400px;
+	height: 60px;
+	overflow: scroll;
+}
+.messages input{
+	margin-top: 5px;
+	background-color: green;
+	color: white;
+	padding: 5px 15px;
+	border-radius: 5px;
+	border-color: green;
+	font-size: .6em;
+}
+.comments{
+	font-size: .8em;
+	width: 600px;
+	margin-top: 8px;
+	margin-left: 50px;
+}
+.comments p{
+	margin-left: 0px;
+}
+.comments input{
+	margin-top: 5px;
+	margin-bottom: 10px;
+	background-color: red;
+	color: white;
+	padding: 3px 10px;
+	border-radius: 5px;
+	border-color: red;
+	font-size: .6em;
 }
